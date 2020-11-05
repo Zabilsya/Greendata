@@ -1,0 +1,1 @@
+export const check = (worker) => ({type: 'FOCUS', item: worker});
