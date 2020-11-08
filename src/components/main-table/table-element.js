@@ -1,10 +1,10 @@
 import React from 'react';
 
-const TableElement = ({worker}) => {
+const TableElement = ({worker, onClick}) => {
     const {id, name, position, dateOfBirth, sex, fired} = worker;
 
     return (
-        <tr onClick>
+        <tr onClick={onClick}>
             <th>{id}</th>
             <td>{name}</td>
             <td>{position}</td>
@@ -14,6 +14,5 @@ const TableElement = ({worker}) => {
         </tr>
     )
 }
-
 
 export default TableElement;

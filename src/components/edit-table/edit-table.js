@@ -1,7 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import * as actions from '../../actions';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
 
 import EditTableHeader from './edit-table-header';
 import EditTableBody from './edit-table-body';
@@ -14,3 +12,5 @@ const EditTable = () => {
         </table>
     )
 }
+
+export default EditTable

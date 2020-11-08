@@ -1,30 +1,19 @@
 import React from 'react';
 import TableElement from './table-element';
 
-import {connect} from 'react-redux';
-import * as actions from '../../actions';
-import {bindActionCreators} from 'redux';
 
-const TableBody = ({workers}) => {
+const TableBody = ({workers, choose}) => {
+
     return (
         <tbody>
             {
                 workers.map(item => {
-                    return <TableElement key={item.id} worker={item}/>
+                    return <TableElement key={item.id} worker={item} onClick={() => choose(item)}/>
                 })
             }           
         </tbody>
     ) 
 }
 
-const mapStateToProps = (state) => {
-    return {
-        workers : state
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(actions, dispatch); 
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TableBody);
+export default TableBody;

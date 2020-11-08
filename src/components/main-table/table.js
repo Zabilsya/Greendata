@@ -1,19 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../../actions';
+import {choose} from '../../actions';
 import {bindActionCreators} from 'redux';
 
 import TableHeader from './table-header';
 import TableBody from './table-body';
 
-const Table = () => {
+const Table = ({workers, choose}) => {
+   
     return (
         <table className="table">
             <TableHeader/>
-            <TableBody/>
+            <TableBody workers={workers} choose={choose}/>
         </table>
     )
 }
 
-export default Table;
+const mapStateToProps = state => ({
+    workers: state.workers
+  })
+
+  const mapDispatchToProps = {
+    choose
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table)
 
