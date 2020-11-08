@@ -1,65 +1,62 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Calendar from 'react-calendar';
-import {changeRadio} from '../../actions';
+import {changeSex, changeFired, changeName, changeDate, changePosition} from '../../actions';
+import '../../style.css';
 
-const EditTableBody = ({worker, changeRadio}) => {
-    const {name, position, dateOfBirth, sex, fired} = worker;
-    const positions = ['Администратор баз данных', 
-    'Архитектор программного обеспечения', 
-    'Аналитик программного обеспечения', 
-    'Ведущий программист', 
-    'Контент-менеджер', 
-    'Редактор', 
-    'Системный администратор', 
-    'Тестировщик',
-    'Технический писатель', 
-    'Руководитель проектов'];
-
-    const date = new Date(dateOfBirth.split('.').reverse().join('.'));
-    console.log("render");
+const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, changeDate, changePosition}) => {
+    let name, position, dateOfBirth, sex, fired;
+    if (worker) 
+        {
+            name = worker.name;
+            position = worker.position; 
+            dateOfBirth = worker.dateOfBirth;
+            sex = worker.sex;
+            fired = worker.fired;
+        } else {
+            name = '';
+            position = '';
+            dateOfBirth = '';
+            sex = '';
+            fired = '';
+        }
+   
+    const date = dateOfBirth.split('.').reverse().join('-');
 
     return (
         <tbody>
             
             <tr>
                 <th>ФИО</th>
-                <td>{name}</td>
+                <td><input type="text" id="name" disabled={!worker} value={name} onChange={(e) => changeName(e.target.value)}/></td>
             </tr>
 
             <tr>
                 <th>Должность</th>
                 <td>
-                    <div className="btn-group">
-                        <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {position}
-                        </button>
-                        <div className="dropdown-menu">
-                            {
-                                positions.forEach((item, index) => {
-                                    <button key={index} className="dropdown-item" type="button">{item}</button>
-                                })
-                            }
-                        </div>
-                    </div>
+                    <select value={position} disabled={!worker} onChange={(e) => changePosition(e.target.value)}>
+                        {
+                            positions.map((item, index) => (
+                                <option key={index}>{item}</option>
+                            ))
+                        }
+                        
+                    </select>
                 </td>
             </tr>
 
             <tr>
                 <th>Дата рождения</th>
                 <td>
-                    <Calendar 
-                        onChange={() => console.log("")}
-                        value={date}/>
+                    <input type="date" value={date} disabled={!worker} max={new Date()} onChange={(e) => changeDate(e.target.value)} onInput={(e) => changeDate(e.target.value)}/>      
                 </td>
             </tr>
 
             <tr>
                 <th>Пол</th>
                 <td>
-                    <input type="radio" id="choice1" value="man" checked={sex === "Мужской" ? true : false} onChange={(e) => changeRadio(e.target.value)}/>
+                    <input type="radio" id="choice1" disabled={!worker} value="man" checked={sex === "Мужской" ? true : false} onChange={(e) => changeSex(e.target.value)}/>
                     <label for="choice1">Мужской</label>
-                    <input type="radio" id="choice2" value="woman" checked={sex === "Женский" ? true : false} onChange={(e) => changeRadio(e.target.value)}/>
+                    <input type="radio" id="choice2" disabled={!worker} value="woman" checked={sex === "Женский" ? true : false} onChange={(e) => changeSex(e.target.value)}/>
                     <label for="choice2">Женский</label>
                 </td>
             </tr>
@@ -67,7 +64,7 @@ const EditTableBody = ({worker, changeRadio}) => {
             <tr>
                 <th>Уволен</th>
                 <td>
-                    <input type="checkbox" id="fired" checked={fired}/>
+                    <input type="checkbox" id="fired" disabled={!worker} checked={fired} onChange={() => changeFired()}/>
                     <label for="fired">Уволен</label>
                 </td>
             </tr>
@@ -76,13 +73,18 @@ const EditTableBody = ({worker, changeRadio}) => {
     ) 
 }
 
-const mapStateToProps = ({worker}) => ({
-    worker
+const mapStateToProps = ({worker, positions}) => ({
+    worker,
+    positions
 })
 
 
 const mapDispatchToProps = {
-    changeRadio
+    changeSex,
+    changeFired,
+    changeName, 
+    changeDate,
+    changePosition
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditTableBody)

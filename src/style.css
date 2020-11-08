@@ -1,0 +1,7 @@
+#name {
+    width: 100%;
+}
+
+.active {
+    background: yellow;
+}

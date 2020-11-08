@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import EditTableHeader from './edit-table-header';
 import EditTableBody from './edit-table-body';

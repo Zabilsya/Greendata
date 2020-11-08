@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {choose} from '../../actions';
-import {bindActionCreators} from 'redux';
 
 import TableHeader from './table-header';
 import TableBody from './table-body';
