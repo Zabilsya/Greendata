@@ -3,7 +3,20 @@ import {connect} from 'react-redux';
 import {changeSex, changeFired, changeName, changeDate, changePosition} from '../../actions';
 import '../../css/editTable.css';
 
-const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, changeDate, changePosition}) => {
+const positions = [
+    '',
+    'Администратор баз данных', 
+    'Архитектор программного обеспечения', 
+    'Аналитик программного обеспечения', 
+    'Ведущий программист', 
+    'Контент-менеджер', 
+    'Редактор', 
+    'Системный администратор', 
+    'Тестировщик',
+    'Технический писатель', 
+    'Руководитель проектов']
+
+const EditTableBody = ({worker, changeSex, changeFired, changeName, changeDate, changePosition}) => {
     let name, position, dateOfBirth, sex, fired;
     if (worker) 
         {
@@ -27,13 +40,13 @@ const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, c
             
             <tr>
                 <th>ФИО</th>
-                <td><input type="text" className="form-control" id="name" disabled={!worker} value={name} onChange={(e) => changeName(e.target.value)}/></td>
+                <td><input type="text" className="form-control" id="name" disabled={!worker} value={name} onChange={(e) => changeName(e.target.value, worker)}/></td>
             </tr>
 
             <tr>
                 <th>Должность</th>
                 <td>
-                    <select value={position} disabled={!worker} onChange={(e) => changePosition(e.target.value)}>
+                    <select value={position} disabled={!worker} onChange={(e) => changePosition(e.target.value, worker)}>
                         {
                             positions.map((item, index) => (
                                 <option key={index}>{item}</option>
@@ -47,7 +60,7 @@ const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, c
             <tr>
                 <th>Дата рождения</th>
                 <td>
-                    <input type="date" value={date} disabled={!worker} max={new Date()} onChange={(e) => changeDate(e.target.value)} onInput={(e) => changeDate(e.target.value)}/>      
+                    <input type="date" value={date} disabled={!worker} max={new Date()} onChange={(e) => changeDate(e.target.value, worker)} onInput={(e) => changeDate(e.target.value, worker)}/>      
                 </td>
             </tr>
 
@@ -56,11 +69,11 @@ const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, c
                 <td>
                     <div className="radio-buttons">
                         <div className="custom-control custom-radio radio1">
-                            <input type="radio" id="customRadio1" value="man" className="custom-control-input" disabled={!worker} checked={sex === "Мужской" ? true : false} onChange={(e) => changeSex(e.target.value)}/>
+                            <input type="radio" id="customRadio1" value="man" className="custom-control-input" disabled={!worker} checked={sex === "Мужской" ? true : false} onChange={(e) => changeSex(e.target.value, worker)}/>
                             <label className="custom-control-label" htmlFor="customRadio1">Мужской</label>
                         </div>
                         <div className="custom-control custom-radio radio2">
-                            <input type="radio" id="customRadio2" value="woman" className="custom-control-input" disabled={!worker} checked={sex === "Женский" ? true : false} onChange={(e) => changeSex(e.target.value)}/>
+                            <input type="radio" id="customRadio2" value="woman" className="custom-control-input" disabled={!worker} checked={sex === "Женский" ? true : false} onChange={(e) => changeSex(e.target.value, worker)}/>
                             <label className="custom-control-label" htmlFor="customRadio2">Женcкий</label>
                         </div>
                     </div>
@@ -71,7 +84,7 @@ const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, c
                 <th>Уволен</th>
                 <td>
                     <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1" disabled={!worker} checked={fired} onChange={() => changeFired()}/>
+                        <input type="checkbox" className="custom-control-input" id="customCheck1" disabled={!worker} checked={fired} onChange={() => changeFired(worker)}/>
                         <label className="custom-control-label" htmlFor="customCheck1">Уволен</label>
                     </div>
                 </td>
@@ -81,9 +94,8 @@ const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, c
     ) 
 }
 
-const mapStateToProps = ({worker, positions}) => ({
-    worker,
-    positions
+const mapStateToProps = ({worker}) => ({
+    worker
 })
 
 

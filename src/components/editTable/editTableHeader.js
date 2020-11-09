@@ -4,8 +4,8 @@ const EditTableHeader = () => {
   return (
     <thead>
     <tr>
-      <th scope="col">Атрибут</th>
-      <th scope="col">Значение</th>
+      <th>Атрибут</th>
+      <th>Значение</th>
     </tr>
   </thead>
   )

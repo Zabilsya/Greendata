@@ -1,15 +1,15 @@
-export const choose = (worker) => ({type: 'CHOOSE', value: worker});
+export const choose = (worker) => ({type: 'CHOOSE', worker});
 
-export const changeDate = (date) => ({type: "CHANGE_DATE", value: date});
+export const changeDate = (value, worker) => ({type: "CHANGE_DATE", value, worker});
 
-export const changeSex = (value) => ({type: "CHANGE_SEX", value});
+export const changeSex = (value, worker) => ({type: "CHANGE_SEX", value, worker});
 
-export const changeFired = () => ({type: "CHANGE_FIRED"});
+export const changeFired = (worker) => ({type: "CHANGE_FIRED", worker});
 
-export const changeName = (value) => ({type: "CHANGE_NAME", value});
+export const changeName = (value, worker) => ({type: "CHANGE_NAME", value, worker});
 
-export const changePosition = (value) => ({type: "CHANGE_POSITION", value});
+export const changePosition = (value, worker) => ({type: "CHANGE_POSITION", value, worker});
 
-export const deleteWorker = () => ({type: "DELETE_WORKER"});
+export const deleteWorker = (worker) => ({type: "DELETE_WORKER", worker});
 
 export const addWorker = () => ({type: "ADD_WORKER"});

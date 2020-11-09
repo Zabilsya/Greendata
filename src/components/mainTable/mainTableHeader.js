@@ -4,12 +4,12 @@ const MainTableHeader = () => {
   return (
     <thead className="thead-dark">
     <tr>
-      <th scope="col">id</th>
-      <th scope="col">ФИО</th>
-      <th scope="col">Должность</th>
-      <th scope="col">Дата рождения</th>
-      <th scope="col">Пол</th>
-      <th scope="col">Уволен</th>
+      <th>id</th>
+      <th>ФИО</th>
+      <th>Должность</th>
+      <th>Дата рождения</th>
+      <th>Пол</th>
+      <th>Уволен</th>
     </tr>
   </thead>
   )
