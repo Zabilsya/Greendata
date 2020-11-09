@@ -132,7 +132,7 @@ const reducerShow = (state = initialState, action) => {
                 }
             } 
            
-            const newWorker = {id: state.workers.length + 1, name: '', position: '', dateOfBirth: '', sex: '', fired: false, active: true};
+            const newWorker = {id: state.workers.length + 1, name: '', position: '', dateOfBirth: '', sex: '', fired: false};
             const newArr6 = [...state.workers];
             newArr6.push(newWorker);
             return {

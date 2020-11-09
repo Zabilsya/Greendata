@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TableHeader = () => {
+const MainTableHeader = () => {
   return (
     <thead className="thead-dark">
     <tr>
@@ -15,4 +15,4 @@ const TableHeader = () => {
   )
 }
 
-export default TableHeader;
+export default MainTableHeader;

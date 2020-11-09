@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import '../../style.css';
+import '../../css/mainTable.css';
 
-const TableElement = ({worker, choosenWorker, onClick}) => {
+const MainTableElement = ({worker, choosenWorker, onClick}) => {
     const {id, name, position, dateOfBirth, sex, fired} = worker;
     const elemFired = fired === true ? 'Да' : 'Нет';
     return (
-        <tr className={choosenWorker.id === id ? 'active' : 'none-active'} onClick={onClick}>
+        <tr className={choosenWorker.id === id ? 'table-item active' : 'table-item'} onClick={onClick}>
             <th>{id}</th>
             <td>{name}</td>
             <td>{position}</td>
@@ -26,4 +26,4 @@ const mapDispatchToProps = {
    
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableElement)
+export default connect(mapStateToProps, mapDispatchToProps)(MainTableElement)

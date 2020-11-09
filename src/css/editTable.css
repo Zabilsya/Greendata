@@ -1,0 +1,12 @@
+.table td {
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.custom-radio {
+    display: inline-block;
+}
+
+.radio1 {
+    margin-right: 38px;
+}

@@ -1,0 +1,7 @@
+.btn {
+    transition: background .3s linear;
+}
+
+.delete {
+    margin-right: 10px;
+}

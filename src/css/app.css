@@ -1,0 +1,29 @@
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: center;
+}
+
+.header {
+    width: 100%;
+    font-size: 40px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin: 0;
+    border-bottom: 2px solid #000000;
+    transition: all .4s linear;
+}
+
+.header:hover {
+    background: rgb(115, 155, 230);
+    color: #ffffff;
+}
+
+.content-elements {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}

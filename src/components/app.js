@@ -1,17 +1,21 @@
 import React from 'react';
-import Table from './main-table/table';
-import EditTable from './edit-table/edit-table';
-import DeleteButton from './deleteButton';
-import AddButton from './addButton';
+import MainTable from './mainTable/mainTable';
+import EditTable from './editTable/editTable';
+import Buttons from './buttons/buttons';
+import '../css/app.css';
 
 const App = () => {
     return (
-        <>
-        <Table/>
-        <DeleteButton/>
-        <AddButton/>
-        <EditTable/>
-        </>
+    <div className='content'>
+        <h1 className='header'>Управление персоналом</h1>
+        <div className='content-elements'>
+            <MainTable/>
+            <div className='edit-elements'>
+                <EditTable/>
+                <Buttons/>
+            </div>
+        </div>
+    </div>
     )
 }
 

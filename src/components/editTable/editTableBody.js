@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {changeSex, changeFired, changeName, changeDate, changePosition} from '../../actions';
-import '../../style.css';
+import '../../css/editTable.css';
 
 const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, changeDate, changePosition}) => {
     let name, position, dateOfBirth, sex, fired;
@@ -27,7 +27,7 @@ const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, c
             
             <tr>
                 <th>ФИО</th>
-                <td><input type="text" id="name" disabled={!worker} value={name} onChange={(e) => changeName(e.target.value)}/></td>
+                <td><input type="text" className="form-control" id="name" disabled={!worker} value={name} onChange={(e) => changeName(e.target.value)}/></td>
             </tr>
 
             <tr>
@@ -54,18 +54,26 @@ const EditTableBody = ({worker, positions, changeSex, changeFired, changeName, c
             <tr>
                 <th>Пол</th>
                 <td>
-                    <input type="radio" id="choice1" disabled={!worker} value="man" checked={sex === "Мужской" ? true : false} onChange={(e) => changeSex(e.target.value)}/>
-                    <label for="choice1">Мужской</label>
-                    <input type="radio" id="choice2" disabled={!worker} value="woman" checked={sex === "Женский" ? true : false} onChange={(e) => changeSex(e.target.value)}/>
-                    <label for="choice2">Женский</label>
+                    <div className="radio-buttons">
+                        <div className="custom-control custom-radio radio1">
+                            <input type="radio" id="customRadio1" value="man" className="custom-control-input" disabled={!worker} checked={sex === "Мужской" ? true : false} onChange={(e) => changeSex(e.target.value)}/>
+                            <label className="custom-control-label" htmlFor="customRadio1">Мужской</label>
+                        </div>
+                        <div className="custom-control custom-radio radio2">
+                            <input type="radio" id="customRadio2" value="woman" className="custom-control-input" disabled={!worker} checked={sex === "Женский" ? true : false} onChange={(e) => changeSex(e.target.value)}/>
+                            <label className="custom-control-label" htmlFor="customRadio2">Женcкий</label>
+                        </div>
+                    </div>
                 </td>
             </tr>
 
             <tr>
                 <th>Уволен</th>
                 <td>
-                    <input type="checkbox" id="fired" disabled={!worker} checked={fired} onChange={() => changeFired()}/>
-                    <label for="fired">Уволен</label>
+                    <div className="custom-control custom-checkbox">
+                        <input type="checkbox" className="custom-control-input" id="customCheck1" disabled={!worker} checked={fired} onChange={() => changeFired()}/>
+                        <label className="custom-control-label" htmlFor="customCheck1">Уволен</label>
+                    </div>
                 </td>
             </tr>
                                  
