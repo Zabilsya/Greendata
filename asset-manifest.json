@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Greendata/static/css/main.060554ec.chunk.css",
+    "main.js": "/Greendata/static/js/main.ce836c79.chunk.js",
+    "main.js.map": "/Greendata/static/js/main.ce836c79.chunk.js.map",
+    "runtime-main.js": "/Greendata/static/js/runtime-main.e648db45.js",
+    "runtime-main.js.map": "/Greendata/static/js/runtime-main.e648db45.js.map",
+    "static/js/2.3590625d.chunk.js": "/Greendata/static/js/2.3590625d.chunk.js",
+    "static/js/2.3590625d.chunk.js.map": "/Greendata/static/js/2.3590625d.chunk.js.map",
+    "index.html": "/Greendata/index.html",
+    "static/css/main.060554ec.chunk.css.map": "/Greendata/static/css/main.060554ec.chunk.css.map",
+    "static/js/2.3590625d.chunk.js.LICENSE.txt": "/Greendata/static/js/2.3590625d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e648db45.js",
+    "static/js/2.3590625d.chunk.js",
+    "static/css/main.060554ec.chunk.css",
+    "static/js/main.ce836c79.chunk.js"
+  ]
+}
